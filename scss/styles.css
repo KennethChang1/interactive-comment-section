@@ -7,7 +7,6 @@
 
 .main {
   background-color: #F5F6FA;
-  height: 100vh;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -22,6 +21,19 @@
   border-radius: 8px;
 }
 
+.reply {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
 .card {
   background-color: white;
   border-radius: 8px;
@@ -31,6 +43,10 @@
 
 .card--not-active {
   display: none;
+}
+
+.card--reply {
+  width: 325px;
 }
 
 .card__header {

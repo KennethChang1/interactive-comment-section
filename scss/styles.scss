@@ -6,7 +6,6 @@
 
 .main{
     background-color: #F5F6FA;
-    height: 100vh;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -21,6 +20,12 @@
     }
 }
 
+.reply{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .card{
     background-color: white;
     border-radius: 8px;
@@ -29,6 +34,10 @@
 
     &--not-active{
         display: none;
+    }
+
+    &--reply{
+        width: 325px;
     }
 
     &__header{
@@ -63,7 +72,7 @@
         align-items: center;
         justify-content: space-between;
 
-        
+
     }
 
     &__actions{

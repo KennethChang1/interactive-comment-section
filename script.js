@@ -75,10 +75,14 @@ const cardFactory = function () {
 
     const displayComment = (index) => {
         const cardContainer = document.createElement('div');
+        const cardBox = document.createElement('div');
         const replyContainer = document.createElement('div');
 
+
         replyContainer.classList.add('card', 'card--not-active', 'card-js');
+        cardBox.classList.add('box');
         cardContainer.classList.add('card');
+        // displayReply.classList.add('reply');
 
         cardContainer.innerHTML = `
         <div class="card__header">
@@ -108,12 +112,41 @@ const cardFactory = function () {
             <img class="card__image" src="images/avatars/image-juliusomo.webp" alt="">
             <button class="btn">REPLY</button>
         </div>
-        `
+        ` 
 
+        cardBox.appendChild(cardContainer);
+        cardBox.appendChild(replyContainer);
+        container.appendChild(cardBox);
 
-        container.appendChild(cardContainer);
-        container.appendChild(replyContainer);
+        const cards = document.querySelectorAll('.box');
+
+        for(let j = 0; j < data.comments[index].replies.length; j++){
+            const displayReply = document.createElement('div');
+            displayReply.classList.add('reply');
+            displayReply.innerHTML = `
+            <div class="card card--reply">
+                <div class="card__header">
+                    <img class="card__image" src="${data.comments[index].replies[j].user.image.webp}" alt="">
+                    <p class="card__name">da</p>
+                    <p class="card__time">dd}</p>
+                </div>
+                <div class="card__body">
+                    <p class="card__copy">Impressive! Though it seems the drag feature could be improved. But overall it looks
+                    incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
+                </div>
+                <div class="card__footer">
+                    <div class="card__actions">
+                        <img src="images/icon-plus.svg" alt="">
+                        <p>12</p>
+                        <img src="images/icon-minus.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            `
+            cards[index].appendChild(displayReply);
+        }
     };
+    
 
     const displayAllComment = () => {
         for (let i = 0; i < comments.length; i++) {
@@ -167,10 +200,10 @@ card.score();
 card.reply();
 addComment();
 
-function addComment(){
+function addComment() {
     const send = document.getElementById('send');
     const comment = document.querySelector('#comment-input');
-    send.addEventListener('click', ()=>{
+    send.addEventListener('click', () => {
         const cardContainer = document.createElement('div');
 
         cardContainer.classList.add('card');
@@ -203,4 +236,3 @@ function addComment(){
         comment.value = "";
     })
 }
-
