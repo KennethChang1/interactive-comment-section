@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    background-color: #F5F6FA;
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
+}
+
+.container{
+    padding: 32px 0;
+    width: 90%;
+    margin: auto;
+
+    &--input{
+        background-color: white;
+        border-radius: 8px;
+    }
+}
+
+.card{
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    &--not-active{
+        display: none;
+    }
+
+    &__header{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    &__time{
+        color: #67727E;
+    }
+
+    &__image{
+        width: 32px;
+    }
+
+    &__name{
+        font-weight: 500;
+    }
+
+    &__body{
+        margin-bottom: 16px;
+    }
+
+    &__copy{
+        color: #67727E;
+    }
+
+    &__footer{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        
+    }
+
+    &__actions{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 10px;
+        background-color: #F5F6FA;
+        width: 100px;
+        height: 40px;
+    }
+
+    &__input{
+        width: 100%;
+        height: 96px;
+        border-radius: 8px;
+        padding: 12px 0 0 24px;
+        margin-bottom: 16px;
+        font-family: 'Rubik', sans-serif;
+    }
+}
+
+.btn{
+    background-color: #5357B6;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+}
