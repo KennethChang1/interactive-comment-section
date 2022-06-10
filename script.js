@@ -127,18 +127,21 @@ const cardFactory = function () {
             <div class="card card--reply">
                 <div class="card__header">
                     <img class="card__image" src="${data.comments[index].replies[j].user.image.webp}" alt="">
-                    <p class="card__name">da</p>
-                    <p class="card__time">dd}</p>
+                    <p class="card__name">${data.comments[index].replies[j].user.username}</p>
+                    <p class="card__time">${data.comments[index].replies[j].createdAt}</p>
                 </div>
                 <div class="card__body">
-                    <p class="card__copy">Impressive! Though it seems the drag feature could be improved. But overall it looks
-                    incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
+                    <p class="card__copy"><span class="replying">@${data.comments[index].replies[j].replyingTo}</span> ${data.comments[index].replies[j].content}</p>
                 </div>
                 <div class="card__footer">
                     <div class="card__actions">
                         <img src="images/icon-plus.svg" alt="">
-                        <p>12</p>
+                        <p>${data.comments[index].replies[j].score}</p>
                         <img src="images/icon-minus.svg" alt="">
+                    </div>
+                    <div class="card__reply">
+                        <img src="images/icon-reply.svg" alt="">
+                        <span>Reply</span>
                     </div>
                 </div>
             </div>
@@ -185,6 +188,7 @@ const cardFactory = function () {
                 replyContainer[index].classList.toggle('card--not-active');
             });
         });
+        console.log(reply);
     }
 
     return {
@@ -198,15 +202,15 @@ const card = cardFactory();
 card.displayAllComment();
 card.score();
 card.reply();
-addComment();
+comment();
 
-function addComment() {
+function comment() {
     const send = document.getElementById('send');
     const comment = document.querySelector('#comment-input');
     send.addEventListener('click', () => {
         const cardContainer = document.createElement('div');
 
-        cardContainer.classList.add('card');
+        cardContainer.classList.add('card', 'card-comment');
 
         cardContainer.innerHTML = `
         <div class="card__header">
@@ -225,14 +229,31 @@ function addComment() {
             </div>
             <div class="card__footer-logo">
                 <img src="images/icon-delete.svg" alt="">
-                <span>Delete</span>
+                <span class="delete">Delete</span>
                 <img src="images/icon-edit.svg" alt="">
-                <span>Edit</span>
+                <span class='edit'>Edit</span>
             </div>
         </div>
         `
 
         container.appendChild(cardContainer);
         comment.value = "";
+        deleteComment();
+        editComment();
     })
+}
+
+function deleteComment(){
+    const comment = document.querySelectorAll('.card-comment');
+    const deleteComment = document.querySelectorAll('.delete');
+
+    deleteComment.forEach((element, index) => {
+        element.addEventListener('click', ()=>{
+            comment[index].remove();
+        })
+    });
+}
+
+function editComment(){
+    const edit = document.querySelector('.edit');
 }

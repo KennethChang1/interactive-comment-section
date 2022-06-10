@@ -13,6 +13,7 @@
 .container {
   padding: 32px 0;
   width: 90%;
+  max-width: 730px;
   margin: auto;
 }
 
@@ -46,7 +47,8 @@
 }
 
 .card--reply {
-  width: 325px;
+  margin-left: auto;
+  width: 95%;
 }
 
 .card__header {
@@ -122,5 +124,9 @@
   border: none;
   padding: 12px 30px;
   border-radius: 8px;
+}
+
+.replying {
+  color: #5457b6;
 }
 /*# sourceMappingURL=styles.css.map */
